@@ -14,43 +14,72 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    //console.log('查询测试'+app.globalData.user_id);
+    
+    this.showTodaysAffair()
+  },
+
+  //查询用户今日事务
+  showTodaysAffair:function(){
     var _this = this;
     
-    wx.request({
-      url: app.globalData.datasetUrl + '/checkUser/',
-      
-      data: {
-        userID: app.globalData.user_id,
-        //date: _this.globalData.todayDate
-      },
-      method: "POST",
-      header: {
-        'content-type': 'application/json'
-      },
-      success(res) {
-        console.log("test1");
-        console.log(res.data)
-      }
-    })
+    if (app.globalData.user_id && app.globalData.user_id != '') {
+      console.info("openid 有值")
+      wx.request({
+        url: app.globalData.datasetUrl + '/queryTodaysAffair/',
+        data: {
+          userID: app.globalData.user_id,
+          date: app.globalData.todayDate
+        },
+        method: "POST",
+        header: {
+          'content-type': 'application/json'
+        },
+        success(res) {
+          console.log(res.data)
+          _this.setData({
+            display: res.data.result
+          })
+        }
+      })
+    } else{
+      console.info("query中openid 无值");
+      app.onLogin();
+      app.user_idCallback = user_id => {
+        if (user_id != ''){
+          console.info("Callback " + app.globalData.user_id);
+          wx.request({
+            url: app.globalData.datasetUrl + '/queryTodaysAffair/',
+            data: {
+              userID: app.globalData.user_id,
+              date: app.globalData.todayDate
+            },
+            method: "POST",
+            header: {
+              'content-type': 'application/json'
+            },
+            success(res) {
+              console.log(res.data)
+              _this.setData({
+                display: res.data.result
+              })
+            }
+          })
 
-    wx.request({
-      url: app.globalData.datasetUrl+'/queryTodaysAffair/',
-      data:{
-        userID: app.globalData.user_id,
-        date:app.globalData.todayDate
-      },
-      method:"POST",
-      header:{
-        'content-type':'application/json'
-      },
-      success(res){
-        console.log(res.data)
-        _this.setData({
-          display: res.data.result
-        })
+          
+        }
       }
-    })
+    }
+    /*
+    //确认用户登陆状态
+    wx.checkSession({
+      success: function(){
+
+      },
+      fail: function(){
+        app.onLogin()
+      }
+    })*/
+    
   },
 
   //修改单条记录

@@ -3,7 +3,7 @@
 
 App({
   globalData: {
-    user_id: '1',
+    user_id: '',
     datasetUrl: 'https://test.zsran.com',
     todayDate: '',
     nextDate: ''
@@ -19,26 +19,10 @@ App({
     _this.globalData.todayDate = _this.getDate();
     _this.globalData.nextDate = _this.getTomorrowDate();
 
-    //console.log(_this.getTomorrowDate());
+    this.checkUser();
+    
 
-    // 登录
-    wx.login({
-      success: res => {
-        wx.request({
-          url: 'https://tech.zsran.com/getuid.php',
-          data: { code: res.code },
-          header: {
-            'content-type': 'application/json' //默认值
-          },
-          success: function (res) {
-            _this.globalData.user_id = res.data.openid;
-            console.log(_this.globalData.user_id)
-          }
-        })
-        // 发送 res.code 到后台换取 openId, sessionKey, unionId
-      }
-    })
-
+    /*
     // 获取用户信息
     wx.getSetting({
       success: res => {
@@ -58,10 +42,82 @@ App({
           })
         }
       }
+    })*/
+  },
+
+  checkUser:function(){
+    var _this = this;
+    if(_this.globalData.user_id && _this.globalData.user_id != ''){
+      console.info("openid 有值")
+      wx.request({
+        url: _this.globalData.datasetUrl + '/checkUser/',
+
+        data: {
+          userID: _this.globalData.user_id,
+          //date: _this.globalData.todayDate
+        },
+        method: "POST",
+        header: {
+          'content-type': 'application/json'
+        },
+        success(res) {
+          //console.log("test1");
+          console.log(res.data)
+        }
+      })
+    }else{
+      console.info("openid 无值")
+      _this.onLogin()
+      _this.user_idCallback = user_id =>{
+        if(user_id != ''){
+          console.info("Callback " + _this.globalData.user_id)
+          wx.request({
+            url: _this.globalData.datasetUrl + '/checkUser/',
+
+            data: {
+              userID: _this.globalData.user_id,
+              //date: _this.globalData.todayDate
+            },
+            method: "POST",
+            header: {
+              'content-type': 'application/json'
+            },
+            success(res) {
+              //console.log("test1");
+              console.log(res.data)
+            }
+          })
+        }
+      }
+    }
+  },
+
+  //用户登陆函数
+  onLogin: function(){
+    var _this = this;
+    wx.login({
+      success: res => {
+        //console.log("test")
+        wx.request({
+          url: 'https://tech.zsran.com/getuid.php',
+          data: { code: res.code },
+          header: {
+            'content-type': 'application/json' //默认值
+          },
+          success: function (res) {
+            _this.globalData.user_id = res.data.openid;
+            if(_this.user_idCallback){
+              _this.user_idCallback(res.data.openid);
+              //console.log(_this.globalData.user_id)
+            }
+            
+          }
+        })
+        // 发送 res.code 到后台换取 openId, sessionKey, unionId
+      }
     })
   },
 
-  
   getDate: function () {
     var timestamp = Date.parse(new Date());
     var date = new Date(timestamp);
