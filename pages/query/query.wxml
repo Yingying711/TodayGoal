@@ -1,0 +1,27 @@
+<view>{{todayDate}}</view>
+
+<view wx:for="{{display}}" >
+  
+  <scroll-view 
+    scroll-y
+    style="height: 6; display: flex;"
+    bindscrolltoupper="upper"
+    bindscrolltolower="lower"
+    bindscroll="scroll"
+  >
+    <view class="affairBox">事务：{{item.affairContent}}</view>
+    <view class="affairBox">完成情况：{{item.finishedOrNot}}</view>
+    <button bindtap='finishAffair' class='button1' data-id='{{item._id}}'>done</button>
+    <button bindtap='modifyAffair' class='button1' data-id='{{item._id}}' 
+            data-text='{{item.affairContent}}'>modify</button>
+    <button bindtap='moveToNextday' class='button1' data-id='{{item._id}}'>tommorrow</button>
+    <button bindtap='deleteAffair' class='button2' data-id='{{item._id}}'>delete</button>
+    <view class='gapLine'>------------------------</view>
+  </scroll-view>
+</view>
+<view>
+  <button bindtap='addPlan' class='button3'>添加安排</button>
+</view>
+
+
+

@@ -1,0 +1,19 @@
+
+<view wx:for="{{display}}" >
+  
+  <scroll-view 
+    scroll-y
+    style="height: 6; display: flex;"
+    bindscrolltoupper="upper"
+    bindscrolltolower="lower"
+    bindscroll="scroll"
+  >
+    <button bindtap='showDetails' class='button1' data-id='{{item._id}}'>{{item.date}}</button>
+    <view class='gapLine'>------------------------</view>
+  </scroll-view>
+</view>
+
+
+
+
+

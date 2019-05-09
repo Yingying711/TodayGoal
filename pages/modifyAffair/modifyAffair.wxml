@@ -1,0 +1,8 @@
+
+<view class='section'>
+  <input bindinput='bindKeyInput' value='{{originValue}}' auto-focus />
+</view>
+
+<view>
+  <button bindtap='confirmModify'>确认</button>
+</view>

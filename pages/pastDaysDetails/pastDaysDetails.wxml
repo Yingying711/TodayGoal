@@ -1,0 +1,20 @@
+
+<view wx:for="{{display}}" >
+  
+  <scroll-view 
+    scroll-y
+    style="height: 6; display: flex;"
+    bindscrolltoupper="upper"
+    bindscrolltolower="lower"
+    bindscroll="scroll"
+  >
+    <view>事务：{{item.affairContent}}</view>
+    <view>完成情况：{{item.finishedOrNot}}</view>
+    <view class='gapLine'>------------------------</view>
+  </scroll-view>
+</view>
+
+
+
+
+

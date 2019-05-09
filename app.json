@@ -1,0 +1,31 @@
+{
+  "pages": [
+    "pages/query/query",
+    "pages/index/index",
+    "pages/modifyAffair/modifyAffair",
+    "pages/addAffair/addAffair",
+    "pages/pastDays/pastDays",
+    "pages/pastDaysDetails/pastDaysDetails"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#F0F8FF",
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "语音备忘录"
+  },
+  "tabBar": {
+    "color": "#545454",
+    "backgroundColor": "#F0F8FF",
+    "selectedColor": "#c8ad45",
+    "list": [
+      {
+        "pagePath": "pages/query/query",
+        "text": "Today"
+      },
+      {
+        "pagePath": "pages/pastDays/pastDays",
+        "text": "Past Days"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}

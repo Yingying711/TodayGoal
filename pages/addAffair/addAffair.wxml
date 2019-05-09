@@ -1,0 +1,7 @@
+<view class='section'>
+  <input bindinput='bindKeyInput' auto-focus />
+</view>
+
+<view>
+  <button bindtap='addAffair'>添加</button>
+</view>
