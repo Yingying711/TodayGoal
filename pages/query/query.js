@@ -21,51 +21,16 @@ Page({
   //查询用户今日事务
   showTodaysAffair:function(){
     var _this = this;
-    
     if (app.globalData.user_id && app.globalData.user_id != '') {
-      console.info("openid 有值")
-      wx.request({
-        url: app.globalData.datasetUrl + '/queryTodaysAffair/',
-        data: {
-          userID: app.globalData.user_id,
-          date: app.globalData.todayDate
-        },
-        method: "POST",
-        header: {
-          'content-type': 'application/json'
-        },
-        success(res) {
-          console.log(res.data)
-          _this.setData({
-            display: res.data.result
-          })
-        }
-      })
+      //console.info("openid 有值")
+      _this.queryTodaysAffair();
     } else{
-      console.info("query中openid 无值");
+      //console.info("query中openid 无值");
       app.onLogin();
       app.user_idCallback = user_id => {
         if (user_id != ''){
-          console.info("Callback " + app.globalData.user_id);
-          wx.request({
-            url: app.globalData.datasetUrl + '/queryTodaysAffair/',
-            data: {
-              userID: app.globalData.user_id,
-              date: app.globalData.todayDate
-            },
-            method: "POST",
-            header: {
-              'content-type': 'application/json'
-            },
-            success(res) {
-              console.log(res.data)
-              _this.setData({
-                display: res.data.result
-              })
-            }
-          })
-
-          
+          console.info("query中Callback " + app.globalData.user_id);
+          _this.queryTodaysAffair();
         }
       }
     }
@@ -80,6 +45,28 @@ Page({
       }
     })*/
     
+  },
+
+  queryTodaysAffair: function(){
+    var _this = this;
+    wx.request({
+      url: app.globalData.datasetUrl + '/queryTodaysAffair/',
+      data: {
+        userID: app.globalData.user_id,
+        date: app.globalData.todayDate
+      },
+      method: "POST",
+      header: {
+        'content-type': 'application/json'
+      },
+      success(res) {
+        console.log(res.data)
+        _this.setData({
+          display: res.data.result
+        })
+      }
+    })
+
   },
 
   //修改单条记录

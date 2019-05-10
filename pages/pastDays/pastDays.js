@@ -6,7 +6,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-    display:''
+    display:[
+      {day:'', completion:''}
+    ],
+    completion:[]
   },
 
   /**
@@ -26,12 +29,78 @@ Page({
       },
       success(res) {
         console.log(res.data)
-        _this.setData({
-          display: res.data.result
-        })
+        //console.log(res.data.result.length)
+        for(var i=0;i<res.data.result.length;i++){
+          var temp = "display["+i+"].day"
+          _this.setData({
+            [temp]: res.data.result[i]
+          })
+        }
+        if(_this.displayCallback){
+          _this.displayCallback(res.data.result)
+        }
       }
     })
 
+    _this.degreeOfCompletion();
+    
+    _this.completionCallback = completion =>{
+      if(completion != ''){
+        for (var i = 0; i < _this.data.completion.length; i++) {
+          var temp = "display[" + i + "].completion"
+          _this.setData({
+            [temp]: _this.data.completion[i]
+          })
+        }
+      }
+    }
+    
+    console.log(_this.data.display)
+    
+  },
+
+  degreeOfCompletion: function(){
+    var _this = this;
+    _this.displayCallback = display => {
+      //console.log("test")
+      if(display != ''){
+        for (var len=0; len<display.length; len++){
+          var aff = display[len]._id
+          //console.log(aff)
+          wx.request({
+            url: app.globalData.datasetUrl + '/pastDaysDetails/',
+            data: {
+              dayID: aff,
+            },
+            method: "POST",
+            header: {
+              'content-type': 'application/json'
+            },
+            success(res) {
+              console.log(res.data)
+              var affairs = res.data.result
+              var j=0;
+              var i=0;
+              for(;i<affairs.length;i++){
+                if(affairs[i].finishedOrNot) j++;
+              }
+              var com = Math.round(j / (i + 1)*10000)/100.00+"%";
+              _this.data.completion.push(com)
+              if (_this.completionCallback) {
+                _this.completionCallback(_this.data.completion)
+              }
+              /*
+              var temp = "display[" + len + "].completion"
+              _this.setData({
+                [temp]: com
+              })*/
+              
+            }
+          })
+        }
+      }
+    }
+    //console.log(_this.data.completion)
   },
 
   showDetails: function (e) {

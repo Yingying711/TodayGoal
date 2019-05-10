@@ -48,7 +48,7 @@ App({
   checkUser:function(){
     var _this = this;
     if(_this.globalData.user_id && _this.globalData.user_id != ''){
-      console.info("openid 有值")
+      //console.info("openid 有值")
       wx.request({
         url: _this.globalData.datasetUrl + '/checkUser/',
 
@@ -66,11 +66,11 @@ App({
         }
       })
     }else{
-      console.info("openid 无值")
+      //console.info("openid 无值")
       _this.onLogin()
       _this.user_idCallback = user_id =>{
         if(user_id != ''){
-          console.info("Callback " + _this.globalData.user_id)
+          console.info("app中Callback " + _this.globalData.user_id)
           wx.request({
             url: _this.globalData.datasetUrl + '/checkUser/',
 

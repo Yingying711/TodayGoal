@@ -1,5 +1,4 @@
-
-<view wx:for="{{display}}" >
+<view wx:for="{{display}}">
   
   <scroll-view 
     scroll-y
@@ -8,10 +7,12 @@
     bindscrolltolower="lower"
     bindscroll="scroll"
   >
-    <button bindtap='showDetails' class='button1' data-id='{{item._id}}'>{{item.date}}</button>
+    <button bindtap='showDetails' class='button1' data-id='{{item.day._id}}'>{{item.day.date}} 完成度：{{item.completion}}</button>
     <view class='gapLine'>------------------------</view>
   </scroll-view>
 </view>
+
+
 
 
 
