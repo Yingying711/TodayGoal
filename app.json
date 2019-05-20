@@ -8,24 +8,29 @@
     "pages/pastDaysDetails/pastDaysDetails"
   ],
   "window": {
-    "navigationBarBackgroundColor": "#F0F8FF",
+    "navigationBarBackgroundColor": "#F5F5F5",
     "navigationBarTextStyle": "black",
-    "navigationBarTitleText": "语音备忘录"
+    "navigationBarTitleText": "My Goals"
   },
   "tabBar": {
-    "color": "#545454",
-    "backgroundColor": "#F0F8FF",
-    "selectedColor": "#c8ad45",
+    "color": "white",
+    "backgroundColor": "#F5F5F5",
+    "selectedColor": "#696969",
     "list": [
       {
         "pagePath": "pages/query/query",
-        "text": "Today"
+        "text": "Today",
+        "iconPath": "images/todayGoal_.png",
+        "selectedIconPath": "images/todayGoal.png"
       },
       {
         "pagePath": "pages/pastDays/pastDays",
-        "text": "Past Days"
+        "text": "Past Days",
+        "iconPath": "images/pastDays_.png",
+        "selectedIconPath": "images/pastDays.png"
       }
-    ]
+    ],
+    "position": "bottom"
   },
   "sitemapLocation": "sitemap.json"
 }

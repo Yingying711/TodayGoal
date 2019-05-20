@@ -1,7 +1,4 @@
-<view class='section'>
-  <input bindinput='bindKeyInput' auto-focus />
-</view>
+<textarea class="merchant-reg_input"  bindinput='bindKeyInput' maxlength='100' auto-height></textarea>
+<button class="addAffair_button" bindtap='addAffair'><cover-image class="s-icon" src="/images/confirmAdd.png" /></button>
 
-<view>
-  <button bindtap='addAffair'>添加</button>
-</view>
+

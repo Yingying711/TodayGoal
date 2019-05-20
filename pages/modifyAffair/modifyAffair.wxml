@@ -1,8 +1,2 @@
-
-<view class='section'>
-  <input bindinput='bindKeyInput' value='{{originValue}}' auto-focus />
-</view>
-
-<view>
-  <button bindtap='confirmModify'>确认</button>
-</view>
+<textarea class="merchant-reg_input"  value='{{originValue}}' bindinput='bindKeyInput' maxlength='100' auto-height></textarea>
+<button class="confirm_button" bindtap='confirmModify'><cover-image class="s-icon" src="/images/BoardAdd.png" /></button>

@@ -8,7 +8,8 @@ Page({
    */
   data: {
     display: '',
-    dayID:''
+    dayID:'',
+    date:''
   },
 
   /**
@@ -18,7 +19,8 @@ Page({
     var _this = this;
 
     _this.setData({
-      dayID: options.dayID
+      dayID: options.dayID,
+      date: options.date
     })
 
     wx.request({

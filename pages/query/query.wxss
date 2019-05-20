@@ -1,4 +1,83 @@
 /* pages/query/query.wxss */
+/* pages/query/query.wxss */
+.today{
+  font-family:Georgia, 'Times New Roman', Times, serif;
+  font-size: 50rpx;
+  margin-top:20rpx;
+  margin-bottom: 30rpx;
+  text-align: center;
+  color: #4a4266;
+}
+
+.scroll-view{
+  margin-bottom: 200rpx;
+}
+
+.row{
+  display: flex;
+}
+
+.task{
+  display: flex;
+  margin-top: 10rpx;
+  margin-bottom: 5rpx;
+  width: 750rpx;
+  font-family: KaiTi;
+  font-size:40rpx; 
+  text-indent: 20rpx;
+  font-weight: lighter;
+  color: 	#4a4266
+}
+
+.task-done{
+  display: flex;
+  margin-top: 10rpx;
+  margin-bottom: 5rpx;
+  width: 750rpx;
+  font-family: KaiTi;
+  font-size:50rpx; 
+  text-indent: 20rpx;
+  font-weight: lighter;
+  color: 	#D3D3D3
+}
+
+.finished{
+  margin-top: 20rpx;
+  margin-bottom: 10rpx;
+  margin-left: 30rpx;
+  font-family:'Courier New', Courier, monospace;
+  font-style: italic;
+  font-weight: 600;
+  font-size: 50rpx;
+  color: #4a4266
+}
+
+.button1{
+  display: flex;
+  padding: 0;
+  background: none;
+  height: 55rpx;
+  width: 55rpx;
+  margin: 20rpx;
+}
+.button1::after{
+  border:0;
+}
+
+
+.button{
+height: 100rpx;
+width: 100rpx;
+padding: 0;
+background: none;
+position: fixed;
+margin-top:20rpx;
+right:50rpx;
+bottom:50rpx;
+}
+.button::after{
+  border:0;
+}
 
 .affairBox{
   width: 500rpx;
@@ -10,28 +89,16 @@
   color: rgb(66, 142, 185)
 }
 
-.button1{
-  width: 230rpx;
-  height: 70rpx;
-  font-size: 80%;
-  border-radius: 98rpx;
+.s-icon{
+  height: 50rpx;
+  width: 50rpx;
 }
 
-.button2{
-  width: 230rpx;
-  height: 70rpx;
-  font-size: 80%;
-  /*margin-top: 20rpx;*/
-  border-radius: 98rpx;
+.s-icon_1{
+  height: 100rpx;
+  width: 100rpx
 }
 
-.button3{
-  width: 150rpx;
-  height: 150rpx;
-  font-size: 80%;
-  margin-top: 20rpx;
-  border-radius: 98rpx;
-  position: fixed;
-  right: 50rpx;
-  bottom: 50rpx;
+.flex-wrp{
+  display: flex
 }

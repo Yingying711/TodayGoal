@@ -29,7 +29,7 @@ Page({
       app.onLogin();
       app.user_idCallback = user_id => {
         if (user_id != ''){
-          console.info("query中Callback " + app.globalData.user_id);
+          //console.info("query中Callback " + app.globalData.user_id);
           _this.queryTodaysAffair();
         }
       }

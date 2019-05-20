@@ -1,1 +1,24 @@
 /* pages/addAffair/addAffair.wxss */
+.merchant-reg_input{
+  margin: 10rpx;
+  border-radius: 10px;
+  height: 300rpx;
+  font-size: 18px;
+  padding: 10rpx;
+  color: #000;
+  background-color: FFFFFF;
+  border: 1rpx solid #8a6f9a;
+}
+.addAffair_button{
+  height: 100rpx;
+  width: 100rpx;
+  margin-top: 30rpx;
+  padding: 0;
+  background: none;
+  position: fixed;
+  right: 20px;
+}
+.addAffair_button::after{
+  border:0;
+}
+

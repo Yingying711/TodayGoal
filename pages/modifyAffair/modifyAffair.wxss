@@ -1,1 +1,23 @@
 /* pages/modifyAffair/modifyAffair.wxss */
+
+.merchant-reg_input{
+  border-radius: 10px;
+  height: 300rpx;
+  font-size: 18px;
+  padding: 10px;
+  margin-bottom: 10px;
+  color: #000;
+  background-color: beige;
+}
+
+.confirm_button{
+height: 75rpx;
+width: 75rpx;
+padding: 0;
+background: none;
+position: fixed;
+right: 20px;
+}
+.confirm_button::after{
+  border:0;
+}

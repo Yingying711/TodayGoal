@@ -1,1 +1,38 @@
 /* pages/psatDaysDetails/pastDaysDetails.wxss */
+.date{
+  font-family:Georgia, 'Times New Roman', Times, serif;
+  font-size: 50rpx;
+  margin-top:20rpx;
+  margin-bottom: 30rpx;
+  text-align: center;
+  color: #4a4266
+}
+
+.row{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30rpx;
+  margin-top: 30rpx;
+}
+
+.task{
+  display: flex;
+  margin-top: 10rpx;
+  margin-bottom: 5rpx;
+  width: 750rpx;
+  font-family: KaiTi;
+  font-size:50rpx; 
+  text-indent: 20rpx;
+  font-weight: lighter;
+  color: 	#4a4266
+}
+
+.status{
+  display: flex;
+  margin-right: 30rpx
+}
+
+.icon{
+  height: 80rpx;
+  width: 80rpx;
+}

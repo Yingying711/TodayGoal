@@ -16,8 +16,21 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+
     var _this = this;
 
+    _this.setData({
+      display: [
+        { day: '', completion: '' }
+      ],
+      completion: []
+    })
     wx.request({
       url: app.globalData.datasetUrl + '/queryPastDays/',
       data: {
@@ -30,22 +43,22 @@ Page({
       success(res) {
         console.log(res.data)
         //console.log(res.data.result.length)
-        for(var i=0;i<res.data.result.length;i++){
-          var temp = "display["+i+"].day"
+        for (var i = 0; i < res.data.result.length; i++) {
+          var temp = "display[" + i + "].day"
           _this.setData({
             [temp]: res.data.result[i]
           })
         }
-        if(_this.displayCallback){
+        if (_this.displayCallback) {
           _this.displayCallback(res.data.result)
         }
       }
     })
 
     _this.degreeOfCompletion();
-    
-    _this.completionCallback = completion =>{
-      if(completion != ''){
+
+    _this.completionCallback = completion => {
+      if (completion != '') {
         for (var i = 0; i < _this.data.completion.length; i++) {
           var temp = "display[" + i + "].completion"
           _this.setData({
@@ -54,9 +67,8 @@ Page({
         }
       }
     }
-    
+
     console.log(_this.data.display)
-    
   },
 
   degreeOfCompletion: function(){
@@ -84,7 +96,12 @@ Page({
               for(;i<affairs.length;i++){
                 if(affairs[i].finishedOrNot) j++;
               }
-              var com = Math.round(j / (i + 1)*10000)/100.00+"%";
+              if(i==0){
+                var com = '0'
+              }else{
+                var com = j/i*100;
+              }
+              
               _this.data.completion.push(com)
               if (_this.completionCallback) {
                 _this.completionCallback(_this.data.completion)
@@ -105,7 +122,7 @@ Page({
 
   showDetails: function (e) {
     wx.navigateTo({
-      url: '../pastDaysDetails/pastDaysDetails?dayID='+e.currentTarget.dataset.id,
+      url: '../pastDaysDetails/pastDaysDetails?dayID='+e.currentTarget.dataset.id+'&date='+e.currentTarget.dataset.date,
     })
   },
 
@@ -116,12 +133,7 @@ Page({
 
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
+  
 
   /**
    * 生命周期函数--监听页面隐藏
