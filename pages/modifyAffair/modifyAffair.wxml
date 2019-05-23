@@ -1,2 +1,2 @@
 <textarea class="merchant-reg_input"  value='{{originValue}}' bindinput='bindKeyInput' maxlength='100' auto-height></textarea>
-<button class="confirm_button" bindtap='confirmModify'><cover-image class="s-icon" src="/images/BoardAdd.png" /></button>
+<button class="confirm_button" bindtap='confirmModify'><cover-image class="s-icon" src="/images/confirmAdd.png" /></button>

@@ -7,7 +7,9 @@ Page({
    */
   data: {
     display:' ',
-    todayDate: app.globalData.todayDate
+    todayDate: app.globalData.todayDate,
+    selectShow: false,
+    index: 0
   },
 
   /**
@@ -147,5 +149,19 @@ Page({
     wx.navigateTo({
       url: '../addAffair/addAffair',
     })
+  },
+
+  selectTap() {
+    this.setData({
+      selectShow: !this.data.selectShow
+    });
+  },
+  // 点击下拉列表
+  optionTap(e) {
+    let Index = e.currentTarget.dataset.index;//获取点击的下拉列表的下标
+    this.setData({
+      index: Index,
+      selectShow: !this.data.selectShow
+    });
   }
 })

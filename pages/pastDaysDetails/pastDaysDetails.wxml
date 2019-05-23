@@ -10,14 +10,14 @@
 >
   <view wx:for="{{display}}" >
     <view wx:if="{{item.finishedOrNot}}" class='row'>
-      <view class='task'>-- {{item.affairContent}}</view>
+      <view class='task'>· {{item.affairContent}}</view>
       <view class='status'><image class='icon' src="/images/affairDone.png" /></view>
     </view>
   </view>
 
   <view wx:for="{{display}}" >
     <view wx:if="{{!item.finishedOrNot}}" class='row'>
-      <view class='task'>-- {{item.affairContent}}</view>
+      <view class='task'>· {{item.affairContent}}</view>
       <view class='status'><image class='icon' src="/images/affairUndo.png" /></view>
     </view>
 

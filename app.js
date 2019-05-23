@@ -68,14 +68,14 @@ App({
     }else{
       //console.info("openid 无值")
       _this.onLogin()
-      _this.user_idCallback = user_id =>{
-        if(user_id != ''){
+      _this.user_id_checkCallback = user_id_check =>{
+        if(user_id_check != ''){
           console.info("app中Callback " + _this.globalData.user_id)
           wx.request({
             url: _this.globalData.datasetUrl + '/checkUser/',
 
             data: {
-              userID: _this.globalData.user_id,
+              userID: user_id_check,
               //date: _this.globalData.todayDate
             },
             method: "POST",
@@ -109,6 +109,9 @@ App({
             if(_this.user_idCallback){
               _this.user_idCallback(res.data.openid);
               //console.log(_this.globalData.user_id)
+            }
+            if(_this.user_id_checkCallback){
+              _this.user_id_checkCallback(res.data.openid);
             }
             
           }

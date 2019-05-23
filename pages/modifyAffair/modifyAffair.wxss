@@ -1,13 +1,14 @@
 /* pages/modifyAffair/modifyAffair.wxss */
 
 .merchant-reg_input{
+  margin: 10rpx;
   border-radius: 10px;
   height: 300rpx;
   font-size: 18px;
-  padding: 10px;
-  margin-bottom: 10px;
+  padding: 10rpx;
   color: #000;
-  background-color: beige;
+  background-color: FFFFFF;
+  border: 1rpx solid #8a6f9a;
 }
 
 .confirm_button{

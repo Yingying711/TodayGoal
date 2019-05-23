@@ -3,6 +3,7 @@
 <view wx:for="{{display}}">
   
   <scroll-view 
+    wx:if="{{item.day.date != today && item.day.date != nextDay}}"
     scroll-y
     style="height: 6; display: flex;"
     bindscrolltoupper="upper"
@@ -10,8 +11,8 @@
     bindscroll="scroll"
     class='croll-view'
   > 
-    <view class='row'>
-      <view class='date'>{{item.day.date}}</view>
+    <view  class='row'>
+      <view  class='date'>{{item.day.date}}</view>
       <button bindtap='showDetails' class='button1' data-id='{{item.day._id}}' data-date='{{item.day.date}}'><cover-image class='icon' src='/images/moreDetails.png'></cover-image></button>
     </view>
     <progress class='progressbar' percent='{{item.completion}}' stroke-width='30' border-radius='100' activeColor='#4a4266' backgroundColor='#EDEDED' active-mode='backwards' active/>

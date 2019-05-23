@@ -8,24 +8,24 @@
     bindscroll="scroll"
     class='scroll-view'
   > 
-    <view class='finished'>to do: </view>
+    <view class='finished'>ToDo List: </view>
     <view wx:for="{{display}}" wx:if="{{!item.finishedOrNot}}" >
       <view class='row' >
-        <view class="task">-- {{item.affairContent}}</view>
+        <view class="task">· {{item.affairContent}}</view>
         <button bindtap='finishAffair' class='button1' data-id='{{item._id}}'><cover-image src="/images/finishAffair.png" /></button>
         <button bindtap='modifyAffair' class='button1' data-id='{{item._id}}' 
               data-text='{{item.affairContent}}'><cover-image class="s-icon" src="/images/modifyAffair.png" /></button>
         <button bindtap='deleteAffair' class='button1' data-id='{{item._id}}'><cover-image class="s-icon" src="/images/deleteAffair.png" /></button>
         <button bindtap='moveToNextday' class='button1' data-id='{{item._id}}'><cover-image class="s-icon" src="/images/delay.png" /></button>
         
+        
        </view>
     </view>
-    <view>.</view>
-    <view>.</view>
+    <text decode="true">\n\n</text>
     <view class='finished'>finished:</view>
     <view wx:for="{{display}}" wx:if="{{item.finishedOrNot}}" >
       <view class='row' >
-        <view class="task">-- {{item.affairContent}}</view>
+        <view class="task">· {{item.affairContent}}</view>
         <button bindtap='deleteAffair' class='flex-item button1' data-id='{{item._id}}'><cover-image class="s-icon" src="/images/deleteAffair.png" /></button>
        </view>
     </view>
